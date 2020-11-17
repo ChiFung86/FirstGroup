@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyu.StudentInfoSys.mapper.UserMapper">
+	<resultMap id="UserResult" type="com.wyu.StudentInfoSys.entity.User">
+        <result column="userId" jdbcType="VARCHAR" property="userId" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="phoneNum" jdbcType="VARCHAR" property="phoneNum" />
+        <result column="mail" jdbcType="VARCHAR" property="mail" />
+    </resultMap>
+    <select id="getUserById" parameterType="com.wyu.StudentInfoSys.entity.User" resultMap="UserResult">
+        select * from user where userId = #{userId}
+    </select>
+    <insert id="saveUser" parameterType="com.wyu.StudentInfoSys.entity.User" >
+        insert into user(userId,userName,password,phoneNum,mail) values(#{userId},#{userName},#{password},#{phoneNum},#{mail})
+    </insert>
+    <update id="updateUser" parameterType="com.wyu.StudentInfoSys.entity.User">
+        update user set userName=#{userName},password=#{password},phoneNum=#{phoneNum},mail=#{mail} where userId=#{userId}
+    </update>
+</mapper>
