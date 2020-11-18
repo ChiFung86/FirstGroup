@@ -22,4 +22,7 @@ public interface StudentMapper {
 	
 	/*修改学生*/
 	public void updateStudent(Student student);
+	
+	//统计学生信息
+	public void summaryStudent();
 }

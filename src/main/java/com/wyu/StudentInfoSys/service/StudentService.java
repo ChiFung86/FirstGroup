@@ -11,6 +11,6 @@ public interface StudentService {
 	 boolean addStudent(Student student);
 	 boolean deleteStudent(String studentNumber);
 	 boolean updateStudent(Student student);
-	
-	PageInfo<Student> getStudentPage(int pageNum, int pageSize);
+	 void summaryStudent();
+	 PageInfo<Student> getStudentPage(int pageNum, int pageSize);
 }

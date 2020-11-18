@@ -98,4 +98,11 @@ public class StudentServiceImpl implements StudentService {
 		return pageInfo;
 	}
 
+	@Override
+	public void summaryStudent() {
+		// TODO Auto-generated method stub
+		studentMapper.summaryStudent();
+		
+	}
+
 }

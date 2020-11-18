@@ -110,5 +110,13 @@ public class StudentContorller {
 		        }
 			}
 			
+<<<<<<< HEAD
 
+=======
+			@RequestMapping(value="/summary",method = RequestMethod.GET)
+			public void summaryStudent() {
+				studentService.summaryStudent();
+				System.out.println("查询成功");
+			}
+>>>>>>> 24f8234109dba930d2c9049ef63df1dd7d30c864
 }

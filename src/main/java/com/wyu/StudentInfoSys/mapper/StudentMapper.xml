@@ -24,4 +24,7 @@
 		  set studentNumber=#{studentNumber},name=#{name},birth=#{birth},sex=#{sex},className=#{className},phoneNumber=#{phoneNumber},department=#{department},photo=#{photo} 
 		  where studentNumber=#{studentNumber}
 	</update>
+	<select id="summaryStudent" resultType="java.lang.Integer">
+		select count(className),count(department),count(sex) from student
+	</select>
 </mapper>
