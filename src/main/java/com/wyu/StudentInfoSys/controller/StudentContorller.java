@@ -65,4 +65,10 @@ public class StudentContorller {
 			public String uploadImg(@RequestParam("fileName") MultipartFile file) {
 				return null;
 			}
+			
+			@RequestMapping(value="/summary",method = RequestMethod.GET)
+			public void summaryStudent() {
+				studentService.summaryStudent();
+				System.out.println("查询成功");
+			}
 }

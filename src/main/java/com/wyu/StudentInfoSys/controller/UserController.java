@@ -97,6 +97,12 @@ public class UserController {
 		
 	}
 	
+	/**用户信息修改功能
+	 * @param user
+	 * @param session
+	 * @param response
+	 * @return
+	 */
 	@PostMapping("/user/update")
 	@CrossOrigin
 	public Map<String, Object> updateUser(@RequestBody User user,
