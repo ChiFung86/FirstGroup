@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wyu.StudentInfoSys.mapper.StudentMapper">
+	<select id="getStudent" parameterType="string"
+		resultType="student">
+		select * from student where studentNumber = #{studentNumber}
+	</select>
+	<select id="selectStudents"
+		resultType="student">
+		select * from student
+	</select>
+	<insert id="saveStudent"
+		parameterType="student">
+		insert into student(id,studentNumber,name,birth,sex,className,phoneNumber,department,photo) 
+		            values(#{id},#{studentNumber},#{name},#{birth},#{sex},#{className},#{phoneNumber},#{department},#{photo})
+	</insert>
+	<delete id="deleteStudent" parameterType="String">
+		delete from student where studentNumber=#{studentNumber}
+	</delete>
+	<update id="updateStudent"
+		parameterType="student">
+		update student 
+		  set studentNumber=#{studentNumber},name=#{name},birth=#{birth},sex=#{sex},className=#{className},phoneNumber=#{phoneNumber},department=#{department},photo=#{photo} 
+		  where studentNumber=#{studentNumber}
+	</update>
+</mapper>
