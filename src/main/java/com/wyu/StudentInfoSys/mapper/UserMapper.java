@@ -7,6 +7,6 @@ import com.wyu.StudentInfoSys.entity.User;
 @Mapper
 public interface UserMapper {
 	public User getUserById(String userId);
-	public void saveUser(User user);
-	public void updateUser(User user);
+	public boolean saveUser(User user);
+	public boolean updateUser(User user);
 }

@@ -19,15 +19,15 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void saveUser(User user) {
+	public boolean saveUser(User user) {
 		// TODO Auto-generated method stub
-		userMapper.saveUser(user);
+		return userMapper.saveUser(user);
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public boolean updateUser(User user) {
 		// TODO Auto-generated method stub
-		userMapper.updateUser(user);
+		return userMapper.updateUser(user);
 		
 	}
 	
