@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.wyu.StudentInfoSys.entity.Infor;
 import com.wyu.StudentInfoSys.entity.Student;
 
 @Mapper
 public interface StudentMapper {
-	/*查找1个学生*/
-	public Student getStudent(String studentNumber);
+	/*模糊查找学生*/
+	public List<Student> getStudent(Student student);
 	
 	/*查找所有学生*/
 	public List<Student> selectStudents();
@@ -23,6 +24,10 @@ public interface StudentMapper {
 	/*修改学生*/
 	public void updateStudent(Student student);
 	
-	//统计学生信息
-	public void summaryStudent();
+	/*统计学生信息*/
+	public List<Infor> departInfors();
+	public List<Infor>classInfors();
+	public List<Infor>sexInfors();
+	public List<Infor>stuInfors();
+	
 }

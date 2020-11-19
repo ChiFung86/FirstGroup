@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wyu.StudentInfoSys.entity.Infor;
 import com.wyu.StudentInfoSys.entity.Student;
 import com.wyu.StudentInfoSys.mapper.StudentMapper;
 import com.wyu.StudentInfoSys.service.StudentService;
@@ -19,25 +20,27 @@ public class StudentServiceImpl implements StudentService {
 	private StudentMapper studentMapper;
 	
 	@Override
-	/*查找1个学生
-	 * param 学号*/
-	public Student getStudent(String studentNumber) {
+	/*查找某些学生
+	 * param Student*/
+	public List<Student> getStudent(Student student) {
 		// TODO Auto-generated method stub
-		Student student = studentMapper.getStudent(studentNumber);
-		return student;
+		List<Student> students = new ArrayList<Student>();
+	    students = studentMapper.getStudent(student);
+		return students;
 	}
 
 	@Override
 	/*查找所有学生*/
 	public List<Student> selectStudents() {
-		// TODO Auto-generated method stub
-		List<Student> students = new ArrayList<Student>();
-		students = studentMapper.selectStudents();
-		return students;
+		return null;
+//		// TODO Auto-generated method stub
+//		List<Student> students = new ArrayList<Student>();
+//		students = studentMapper.selectStudents();
+//		return students;
 	}
 
 	@Override
-	/*查找所有学生
+	/*增加学生
 	 * param Student*/
 	public boolean addStudent(Student student) {
 		// TODO Auto-generated method stub
@@ -88,7 +91,7 @@ public class StudentServiceImpl implements StudentService {
 
 	/*分页查询
 	 * param1 页数
-	 * param2 页*/
+	 * param2 页大小*/
 	@Override
 	public PageInfo<Student> getStudentPage(int pageNum, int pageSize) {
 		// TODO Auto-generated method stub
@@ -98,11 +101,20 @@ public class StudentServiceImpl implements StudentService {
 		return pageInfo;
 	}
 
+	/*统计学生信息*/
 	@Override
-	public void summaryStudent() {
+	public List<Infor> allInfors() {
 		// TODO Auto-generated method stub
-		studentMapper.summaryStudent();
-		
+		List<Infor> infors = new ArrayList<Infor>();
+		infors.addAll(studentMapper.departInfors());
+		infors.addAll(studentMapper.classInfors());
+		infors.addAll(studentMapper.sexInfors());
+		infors.addAll(studentMapper.stuInfors());
+		return infors;
 	}
+
+	
+	
+	
 
 }
