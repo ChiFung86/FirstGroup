@@ -17,4 +17,6 @@ public interface StudentService {
 	
 	List<Infor> allInfors();   //统计学生信息
 	
+	List<Infor> departInfors();  //返回系部种类
+	
 }

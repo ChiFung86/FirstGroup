@@ -113,6 +113,15 @@ public class StudentServiceImpl implements StudentService {
 		return infors;
 	}
 
+	/*选出系部种类*/
+	@Override
+	public List<Infor> departInfors() {
+		// TODO Auto-generated method stub
+		return studentMapper.departInfors();
+	}
+	
+	
+
 	
 	
 	
