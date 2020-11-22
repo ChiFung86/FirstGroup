@@ -125,9 +125,14 @@ public class StudentContorller {
 	
 	
 	/*统计学生信息*/
-	@RequestMapping(value = "/test",method = RequestMethod.GET)
+	@RequestMapping(value = "/getInfors",method = RequestMethod.GET)
 	public List<Infor> getInfors() {
 		return studentService.allInfors();
 	}
-
+	
+	@RequestMapping(value = "/test",method = RequestMethod.GET)
+	public void test(@RequestParam String str ) {
+		
+		System.out.println(str);
+	}
 }
