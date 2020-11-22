@@ -30,8 +30,7 @@ public class StudentContorller {
 	 * studentNumber 学号
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public boolean delete(@RequestBody String studentNumber) {
-		System.out.println(studentNumber);
+	public boolean delete(@RequestParam String studentNumber) {
 		System.out.println("删除开始");
 		return studentService.deleteStudent(studentNumber);
 	}
@@ -43,7 +42,7 @@ public class StudentContorller {
 	 *  file 图片
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public boolean addStudent(@RequestBody Student student, @RequestParam MultipartFile file, HttpServletRequest req) {
+	public boolean addStudent(@RequestBody Student student, HttpServletRequest req) {
 		System.out.println("开始增加...");
 		return studentService.addStudent(student);
 	}
@@ -129,10 +128,20 @@ public class StudentContorller {
 	public List<Infor> getInfors() {
 		return studentService.allInfors();
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping(value = "/test",method = RequestMethod.GET)
 	public void test(@RequestParam String str ) {
 		
 		System.out.println(str);
 	}
+=======
+
+	/*统计部门种类*/
+	@RequestMapping(value="depart",method = RequestMethod.GET)
+	public List<Infor> getDepart(){
+		return studentService.departInfors();
+	}
+	
+>>>>>>> 1aca8370be3928315d8dcb79575d6825261e3dbc
 }

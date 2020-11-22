@@ -18,15 +18,17 @@
 	
 	<!-- 查询所有学生 -->
 	<select id="selectStudents" resultType="student">
-		select * from student
+		select * from student order by studentNumber DESC
 	</select>
 	
+	<!-- 增加学生 -->
 	<insert id="saveStudent" parameterType="student">
 		insert into
 		student(id,studentNumber,name,birth,sex,className,phoneNumber,department,photo)
 		values(#{id},#{studentNumber},#{name},#{birth},#{sex},#{className},#{phoneNumber},#{department},#{photo})
 	</insert>
 	
+	<!-- 删除学生 -->
 	<delete id="deleteStudent" parameterType="String">
 		delete from student
 		where studentNumber=#{studentNumber}
