@@ -10,14 +10,22 @@ public class Student {
 	private String phoneNumber;   //手机号码
 	private String department;   //系部
 	private String photo;       //照片
+	private String entryTime;
 	
 	
+
 
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", studentNumber=" + studentNumber + ", name=" + name + ", birth=" + birth
 				+ ", sex=" + sex + ", className=" + className + ", phoneNumber=" + phoneNumber + ", department="
-				+ department + ", photo=" + photo + "]";
+				+ department + ", photo=" + photo + ", entryTime=" + entryTime + "]";
+	}
+	public String getEntryTime() {
+		return entryTime;
+	}
+	public void setEntryTime(String entryTime) {
+		this.entryTime = entryTime;
 	}
 	public String getPhoto() {
 		return photo;

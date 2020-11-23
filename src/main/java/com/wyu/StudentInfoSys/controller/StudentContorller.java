@@ -128,6 +128,7 @@ public class StudentContorller {
 	public List<Infor> getInfors() {
 		return studentService.allInfors();
 	}
+<<<<<<< HEAD
 
 	
 	@RequestMapping(value = "/test",method = RequestMethod.GET)
@@ -136,6 +137,8 @@ public class StudentContorller {
 		System.out.println(str);
 	}
 
+=======
+>>>>>>> 2cba5eed906b37d417e47cae68cf0b3f812f1c95
 
 	/*统计部门种类*/
 	@RequestMapping(value="depart",method = RequestMethod.GET)
@@ -143,5 +146,8 @@ public class StudentContorller {
 		return studentService.departInfors();
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cba5eed906b37d417e47cae68cf0b3f812f1c95
 }
