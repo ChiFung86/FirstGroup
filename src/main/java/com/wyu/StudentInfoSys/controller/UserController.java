@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -116,26 +117,30 @@ public class UserController {
 	 * @param response
 	 * @return
 	 */
-	@PostMapping("/user/update")
+	@PutMapping("/user/update")
 	@CrossOrigin
-	public Map<String, Object> updateUser(@RequestBody User user,
+	public Result updateUser(@RequestBody User user,
 							         HttpSession session,
 							         HttpServletResponse response){
-		Map<String, Object> map = new HashMap<String, Object>();
+		result = new Result();
 		user.getUserId();
+		result.setUserId(user.getUserId());
+		result.setUserName(user.getUserName());
         user.setUserName(user.getUserName());
         user.setPhoneNum(user.getPhoneNum());
         user.setMail(user.getMail());
         user.setPassword(user.getPassword());
-        
+        System.out.println(result.getUserId());
+        System.out.println(result.getUserName());
         boolean count = userService.updateUser(user);
         System.out.println(count);
         if (count == false) {
-            map.put("msg", "修改失败");
-            return map;
+            result.setResult("修改失败");
+			return result;
         }
-        map.put("msg", "修改成功");
-        return map;
+        result.setResult("修改成功");
+        result.setUserName(user.getUserName());
+		return result;
 		
 	}
 }
