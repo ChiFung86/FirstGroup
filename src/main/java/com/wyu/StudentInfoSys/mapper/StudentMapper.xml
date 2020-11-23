@@ -24,8 +24,8 @@
 	<!-- 增加学生 -->
 	<insert id="saveStudent" parameterType="student">
 		insert into
-		student(id,studentNumber,name,birth,sex,className,phoneNumber,department,photo)
-		values(#{id},#{studentNumber},#{name},#{birth},#{sex},#{className},#{phoneNumber},#{department},#{photo})
+		student(id,studentNumber,name,birth,sex,className,phoneNumber,department,photo,entryTime)
+		values(#{id},#{studentNumber},#{name},#{birth},#{sex},#{className},#{phoneNumber},#{department},#{photo},#{entryTime})
 	</insert>
 	
 	<!-- 删除学生 -->
