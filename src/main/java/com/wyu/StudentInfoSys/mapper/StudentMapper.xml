@@ -17,8 +17,11 @@
 	</select>
 	
 	<!-- 查询所有学生 -->
-	<select id="selectStudents" resultType="student">
-		select * from student order by studentNumber DESC
+	<select id="selectStudents" parameterType="string" resultType="student">
+		select * from student  
+		<if test="way == 'DESC'">
+		 order by id DESC
+		</if>
 	</select>
 	
 	<!-- 增加学生 -->
@@ -38,7 +41,7 @@
 	<update id="updateStudent" parameterType="student">
 		update student
 		set
-		studentNumber=#{studentNumber},name=#{name},birth=#{birth},sex=#{sex},className=#{className},phoneNumber=#{phoneNumber},department=#{department},photo=#{photo}
+		studentNumber=#{studentNumber},name=#{name},birth=#{birth},sex=#{sex},className=#{className},phoneNumber=#{phoneNumber},department=#{department},photo=#{photo},entryTime=#{entryTime}
 		where studentNumber=#{studentNumber}
 	</update>
 	

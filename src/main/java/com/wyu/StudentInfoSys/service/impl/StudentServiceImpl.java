@@ -26,17 +26,22 @@ public class StudentServiceImpl implements StudentService {
 		// TODO Auto-generated method stub
 		List<Student> students = new ArrayList<Student>();
 	    students = studentMapper.getStudent(student);
+	    long id= 1;
+	    for(Student student2:students) {
+	    	student2.setId(id);
+	    	id++;
+	    }
 		return students;
 	}
 
 	@Override
 	/*查找所有学生*/
 	public List<Student> selectStudents() {
-		return null;
-//		// TODO Auto-generated method stub
-//		List<Student> students = new ArrayList<Student>();
-//		students = studentMapper.selectStudents();
-//		return students;
+//		return null;
+		// TODO Auto-generated method stub
+		List<Student> students = new ArrayList<Student>();
+		students = studentMapper.selectStudents("DESC");
+		return students;
 	}
 
 	@Override
@@ -93,11 +98,25 @@ public class StudentServiceImpl implements StudentService {
 	 * param1 页数
 	 * param2 页大小*/
 	@Override
-	public PageInfo<Student> getStudentPage(int pageNum, int pageSize) {
+	public PageInfo<Student> getStudentPage(int pageNum, int pageSize,String way) {
 		// TODO Auto-generated method stub
 		PageHelper.startPage(pageNum,pageSize,true);
-		List<Student> students = studentMapper.selectStudents();
+		List<Student> students = studentMapper.selectStudents(way);
 		PageInfo<Student> pageInfo = new PageInfo<Student>(students);
+
+		long len = pageInfo.getTotal();
+		if(way.equals("")||way == null) {
+			long id = (pageNum - 1) * pageSize + 1;
+			for(Student student:students) {
+				student.setId(id++);
+			}
+		}else {
+			long id = len-(pageNum - 1) * pageSize;
+			for(Student student:students) {
+				student.setId(id--);
+			}
+		}
+		System.out.println(pageInfo.getList());
 		return pageInfo;
 	}
 

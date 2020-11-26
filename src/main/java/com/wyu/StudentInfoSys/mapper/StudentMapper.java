@@ -13,7 +13,7 @@ public interface StudentMapper {
 	public List<Student> getStudent(Student student);
 	
 	/*查找所有学生*/
-	public List<Student> selectStudents();
+	public List<Student> selectStudents(String way);
 	
 	/*增加学生*/
 	public void saveStudent(Student student);

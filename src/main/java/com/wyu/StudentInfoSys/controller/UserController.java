@@ -140,6 +140,7 @@ public class UserController {
         }
         result.setResult("修改成功");
         result.setUserName(user.getUserName());
+        System.out.println(result.getResult());
 		return result;
 		
 	}

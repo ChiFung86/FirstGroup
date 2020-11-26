@@ -13,7 +13,7 @@ public interface StudentService {
 	 boolean deleteStudent(String studentNumber);   //删除学生
 	 boolean updateStudent(Student student);  //修改学生信息
 	
-	PageInfo<Student> getStudentPage(int pageNum, int pageSize);    //分页查询
+	PageInfo<Student> getStudentPage(int pageNum, int pageSize,String way);    //分页查询
 	
 	List<Infor> allInfors();   //统计学生信息
 	
