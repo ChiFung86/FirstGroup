@@ -57,13 +57,14 @@ public class ImportByUploadController {
 
 			cell = row.getCell(3);
 			student.setSex(cell.getStringCellValue());
-
+			
 			cell = row.getCell(4);
-			student.setClassName(cell.getStringCellValue());
-
-			cell = row.getCell(5);
 			student.setPhoneNumber(cell.getStringCellValue());
 
+			cell = row.getCell(5);
+			student.setClassName(cell.getStringCellValue());
+
+		
 			cell = row.getCell(6);
 			student.setDepartment(cell.getStringCellValue());
 			
