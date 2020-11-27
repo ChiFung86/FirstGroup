@@ -1,5 +1,6 @@
 package com.wyu.StudentInfoSys.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
@@ -53,6 +54,7 @@ public class StudentContorller {
 	@RequestMapping(value = "/get", method = RequestMethod.POST)
 	public List<Student> getStudent(@RequestBody Student student) {
 		System.out.println("开始模糊查找...");
+		System.out.println(student);
 		return studentService.getStudent(student);
 	}
 	
@@ -72,9 +74,11 @@ public class StudentContorller {
 	 * pageNum 页码
 	 * pageSize 每页行数*/
 	@RequestMapping(value = "/page", method = RequestMethod.POST)
-	public Object getStudentPage(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+	public Object getStudentPage(@RequestParam("pageNum") int pageNum, 
+			                     @RequestParam("pageSize") int pageSize,
+			                     @RequestParam("way") String way) {
 		System.out.println("开始分页.......");
-		return studentService.getStudentPage(pageNum, pageSize);
+		return studentService.getStudentPage(pageNum, pageSize,way);
 	}
 	
 
@@ -84,70 +88,68 @@ public class StudentContorller {
 	@RequestMapping(value = "/upLoadImg", method = RequestMethod.POST)
 	public String uploadImg(@RequestParam MultipartFile file, HttpServletRequest req) throws IOException {
 		if (file.isEmpty()) {
-			System.out.println("空文件！");
 			return null;
 		}
 		// 获取文件格式
 		String fileType = file.getContentType();
-		System.out.println("文件格式：" + fileType);
 		if (!fileType.contains("image")) {
-			System.out.println("文件格式不正确");
 			return null;
 		}
 		// 获取文件名
 		String fileName = file.getOriginalFilename();
-		System.out.println("获取文件名:" + fileName);
 		
 		// 获取文件后缀名
 		String lastName = fileName.substring(fileName.lastIndexOf("."));
 		if (lastName.equals("")) {
 			lastName = ".jpg";
 		}
-		System.out.println("文件后缀名:" + lastName);
 		
 		// 重新生成文件名
 		fileName = UUID.randomUUID() + lastName;
 		System.out.println("新文件名：" + fileName);
 		// 获取项目路径
 		String projectPath = req.getServletContext().getRealPath("") + "\\img";
-		System.out.println("项目路径" + projectPath);
 		if (UploadImg.upload(projectPath, file, fileName)) {
-			// 文件存放的相对路径（存于数据库）
-			String relative = "img/" + fileName;
-			System.out.println("文件相对路径:" + relative);
+			// 文件存放的路径（存于数据库）
+			String relative = "http://localhost:8081/img/" + fileName;
 			return relative;
 		} else {
-			System.out.println("上传图片到本地失败！");
 			return null;
 		}
+	}
+	
+	//删除图片
+	@RequestMapping(value = "/deleteImg",method = RequestMethod.POST)
+	public boolean  deleteImg(@RequestParam String imgSrc, HttpServletRequest req) {
+		// TODO Auto-generated method stub
+		System.out.println("............." + imgSrc);
+		String relative = imgSrc.replace("http://localhost:8081/", "");
+		System.out.println("------------" + relative);
+		String projectPath = req.getServletContext().getRealPath("");
+		String path = projectPath + "\\" + relative;
+		File dest = new File(path);
+		if (dest.exists()) {
+			return dest.delete();
+		}
+		return true;
 	}
 	
 	
 	/*统计学生信息*/
 	@RequestMapping(value = "/getInfors",method = RequestMethod.GET)
 	public List<Infor> getInfors() {
+		System.out.println("开始统计----------");
 		return studentService.allInfors();
 	}
-<<<<<<< HEAD
 
-	
-	@RequestMapping(value = "/test",method = RequestMethod.GET)
-	public void test(@RequestParam String str ) {
-		
-		System.out.println(str);
-	}
 
-=======
->>>>>>> 2cba5eed906b37d417e47cae68cf0b3f812f1c95
 
 	/*统计部门种类*/
-	@RequestMapping(value="depart",method = RequestMethod.GET)
+	@RequestMapping(value="/depart",method = RequestMethod.GET)
 	public List<Infor> getDepart(){
+		System.out.println("开始统计-----");
 		return studentService.departInfors();
 	}
 	
-<<<<<<< HEAD
 
-=======
->>>>>>> 2cba5eed906b37d417e47cae68cf0b3f812f1c95
 }

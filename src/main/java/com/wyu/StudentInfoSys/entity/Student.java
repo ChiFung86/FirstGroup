@@ -1,7 +1,7 @@
 package com.wyu.StudentInfoSys.entity;
 
 public class Student {
-	private int id;                 //序号
+	private long id;                 //序号
 	private String studentNumber;  //学号
 	private String name;           //姓名
 	private String birth;          //出生年月
@@ -36,11 +36,11 @@ public class Student {
 	public Student() {
 		super();
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(long id2) {
+		this.id = id2;
 	}
 	public String getStudentNumber() {
 		return studentNumber;
